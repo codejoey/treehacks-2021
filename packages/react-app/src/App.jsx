@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components"
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Proposals, Process } from "./views"
+import { Hints, ExampleUI, Proposals, Process, Welcome } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -192,6 +192,9 @@ function App(props) {
       <BrowserRouter>
 
         <Menu style={{ textAlign:"center" }} selectedKeys={[route]} mode="horizontal">
+          <Menu.Item key="/welcome">
+            <Link onClick={()=>{setRoute("/welcome")}} to="/welcome">Welcome</Link>
+          </Menu.Item>
           <Menu.Item key="/">
             <Link onClick={()=>{setRoute("/")}} to="/">YourContract</Link>
           </Menu.Item>
@@ -207,6 +210,7 @@ function App(props) {
           <Menu.Item key="/process">
             <Link onClick={()=>{setRoute("/process")}} to="/process">Process</Link>
           </Menu.Item>
+
         </Menu>
 
         <Switch>
@@ -246,6 +250,9 @@ function App(props) {
               blockExplorer={blockExplorer}
             />
             */ }
+          </Route>
+          <Route path="/Welcome">
+            <Welcome />
           </Route>
           <Route path="/hints">
             <Hints
