@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import { Button } from "antd";
+import "./Welcome.css";
 export default function Welcome() {
 
 
@@ -32,6 +33,7 @@ export default function Welcome() {
                 style={{background: "#2F51C9", 
                         color: "#ffffff",
                         padding: "5" }}
+                className={"hoverzoom"}
                 >JOIN COMMINUTY FUND </Button>
 
         </div>
@@ -75,6 +77,7 @@ export default function Welcome() {
                 style={{background: "#2F51C9", 
                         color: "#ffffff",
                         padding: "5" }}
+                className={"hoverzoom"}
                 >VIEW PROPOSALS </Button>
         </div>
         <div style={{textAlign: "left",
@@ -84,7 +87,8 @@ export default function Welcome() {
                     }}>
                 <img src={require('../proposals.png')}
                  style={{maxWidth : "400px",
-                         maxHeight: "200px"}}/>
+                         maxHeight: "200px"}}
+                className={"hoverzoom"}/>
         </div>
     </div>
 
@@ -102,7 +106,8 @@ export default function Welcome() {
                 <img src={require('../finances.png')}
                  style={{maxWidth : "290px",
                          maxHeight: "200px",
-                         float: "right"}}/>
+                         float: "right"}}
+                 className={"hoverzoom"}/>
         </div>
         <div style={{textAlign: "left",
                      paddingTop: "0px",
@@ -117,6 +122,7 @@ export default function Welcome() {
                 style={{background: "#2F51C9", 
                         color: "#ffffff",
                         padding: "5" }}
+                className={"hoverzoom"}
                 >VIEW DASHBOARD </Button>
         </div>
     </div>
@@ -139,6 +145,7 @@ export default function Welcome() {
                 style={{background: "#2F51C9", 
                         color: "#ffffff",
                         padding: "5" }}
+                className={"hoverzoom"}
                 >VIEW MEMBERS </Button>
         </div>
         <div style={{textAlign: "left",
@@ -148,7 +155,8 @@ export default function Welcome() {
                     }}>
                 <img src={require('../members.png')}
                  style={{maxWidth : "260px",
-                         maxHeight: "200px"}}/>
+                         maxHeight: "200px"}}
+                 className={"hoverzoom"}/>
         </div>
     </div>
 
