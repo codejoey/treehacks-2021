@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components"
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Proposals, Process } from "./views"
+import { Hints, ExampleUI, Proposals, Proposal, Process } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -273,6 +273,7 @@ function App(props) {
           <Route path="/proposals">
             <Proposals />
           </Route>
+          <Route path="/proposal/:id" component={Proposal} />
           <Route path="/process">
             <Process />
           </Route>
