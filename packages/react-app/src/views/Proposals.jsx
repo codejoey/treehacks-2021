@@ -12,7 +12,7 @@ export default function Proposals() {
   }, []);
 
   return (
-    <div>
+    <div style={{ filter: "hue-rotate(100deg) saturate(2)" }}>
       <div className="commentbox"></div>
     </div>
   );

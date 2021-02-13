@@ -164,7 +164,7 @@ export default function Hints({yourLocalBalance, mainnetProvider, price, address
         </span>
       </div>
       <div style={{ padding: 128 }}>
-        🛠 Check out your browser's developer console for more... (inpect -> console) 🚀
+        🛠 Check out your browser's developer console for more... (inpect -&gt; console) 🚀
       </div>
     </div>
   );
