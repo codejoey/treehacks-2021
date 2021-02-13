@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <a href="/" target="_blank" rel="noopener noreferrer">
       <PageHeader
-        title="🌱 DAO"
+        title="🧊 BlockFund"
         subTitle="forkable Ethereum dev stack focused on fast product iteration"
         style={{ cursor: "pointer" }}
       />

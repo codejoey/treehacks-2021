@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components"
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Conversations } from "./views"
+import { Hints, ExampleUI, Proposals } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -201,8 +201,8 @@ function App(props) {
           <Menu.Item key="/exampleui">
             <Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
           </Menu.Item>
-          <Menu.Item key="/conversations">
-            <Link onClick={()=>{setRoute("/conversations")}} to="/conversations">Conversations</Link>
+          <Menu.Item key="/proposals">
+            <Link onClick={()=>{setRoute("/proposals")}} to="/proposals">Proposals</Link>
           </Menu.Item>
         </Menu>
 
@@ -267,8 +267,8 @@ function App(props) {
               setPurposeEvents={setPurposeEvents}
             />
           </Route>
-          <Route path="/conversations">
-            <Conversations />
+          <Route path="/proposals">
+            <Proposals />
           </Route>
         </Switch>
       </BrowserRouter>
