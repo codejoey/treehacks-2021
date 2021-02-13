@@ -3,14 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, Skeleton } from "antd";
-import sal from "sal.js";
-import "sal.js/dist/sal.css";
 import "./Proposals.css";
 
 export default function Proposals() {
   const [loading, setLoading] = useState(true);
   const [proposals, setProposals] = useState([]);
-  const { Meta } = Card;
   const cardStyle = {
     boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
     width: "100%",
@@ -18,8 +15,6 @@ export default function Proposals() {
     margin: "1rem",
     borderRadius: "6px"
   };
-
-  useEffect(sal, []);
 
   useEffect(() => {
     setTimeout(() => {
