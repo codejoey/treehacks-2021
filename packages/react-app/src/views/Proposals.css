@@ -1,6 +1,6 @@
-.ant-card {
+.proposals .ant-card {
   transition: all 0.3s cubic-bezier(0,1,1,1);
 }
-.ant-card:hover {
+.proposals .ant-card:hover {
   transform: translateX(1.5rem) scale(1.02);
 }

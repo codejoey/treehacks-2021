@@ -47,7 +47,7 @@ export default function Proposals() {
   }, []);
 
   return (
-    <div style={{ padding: "2rem 6rem" }}>
+    <div style={{ padding: "2rem 6rem" }} className="proposals">
       {loading ? (
         <div>
           {/*([1,1,1,1]).map(_ =>
