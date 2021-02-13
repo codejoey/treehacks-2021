@@ -8,7 +8,7 @@ import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { useUserAddress } from "eth-hooks";
 import { useExchangePrice, useGasPrice, useUserProvider, useContractLoader, useContractReader, useEventListener, useBalance, useExternalContractLoader } from "./hooks";
-import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components";
+import { Header, Account, Faucet, Ramp, Contract, GasGauge, Footer } from "./components";
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
@@ -213,6 +213,7 @@ function App(props) {
 
         </Menu>
 
+
         <Switch>
           <Route exact path="/">
             {/*
@@ -343,7 +344,7 @@ function App(props) {
            </Col>
          </Row>
        </div>
-
+    <Footer/>
     </div>
   );
 }
