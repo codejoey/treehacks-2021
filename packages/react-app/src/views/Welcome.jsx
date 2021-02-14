@@ -18,8 +18,6 @@ export default function Welcome() {
         margin: "0.5rem",
         background: "#F5F9FF" ,
         };
-        
-        useEffect(sal, [])
 
   const history = useHistory();
 
