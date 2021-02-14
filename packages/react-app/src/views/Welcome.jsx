@@ -4,10 +4,26 @@ import React, { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { Button } from "antd";
 import "./Welcome.css";
+import sal from "sal.js";
+import "sal.js/dist/sal.css";
+
+
 export default function Welcome() {
 
 
   const history = useHistory();
+
+  const buttonStyle = {
+        backgroundColor: "#2F43F5",
+        width: "fit-content",
+        height: "fit-content",
+        fontSize: "16px",
+        border: "none",
+        borderRadius: "50px",
+        color: "#fff",
+        padding: "0.5rem 1.5rem",
+        cursor: "pointer"
+      }
 
   return (
       <div>
@@ -33,9 +49,9 @@ export default function Welcome() {
             <Button 
                 onClick={()=>{
                 console.log("join community fund")}}
-                style={{background: "#2F51C9", 
-                        color: "#ffffff",
-                        padding: "5" }}
+                // data-sal="fade"
+                //   data-sal-duration="800"
+                  style={buttonStyle}
                 className={"hoverzoom"}
                 >JOIN COMMINUTY FUND </Button>
 
@@ -56,11 +72,9 @@ export default function Welcome() {
     </div>
     <div style={{textAlign: "center",
                  margin: "60px auto",
-                 width: "60vw"}}>
-    <h2>Democratized community funds powered by blockchain technology.</h2>
-    <h4>A community fund, funded by the community, and spent by the community.</h4>
-    <h4>BlockFund is a decentralised autonomous organisation which enables communities & neighbourhoods in funding community projects that actually matter to residents.</h4>
-    <h4>We  democratise community funds. Allowing residents to vote for their project they actually want and also in a transparent process.</h4>
+                 width: "50vw"}}>
+    <h1>What is BlockFund?</h1>
+    <h4 style={{fontWeight: "400"}}>BlockFund is a decentralised autonomous organisation which democratises community funds. BlockFund allows residents to vote for a project they want in a transparent process. BlockFund highlights the need for environment sustainability projects through ArcGIS mapping, and aids civilians/government to plan a community through cultural urban planning</h4>
     </div >
     
     <div className={"hoverzoom"} style={{textAlign: "left",
@@ -74,12 +88,10 @@ export default function Welcome() {
                      marginRight: "100px",
                      display: "inline-block"}}>
                     <h2>COMMUNITY PROPOSALS</h2>
-                    <h4>View a list of all the active proposals in the community and vote to support it! Click on a proposal to view details, relevant documents, and leave comments.</h4>
-                    <Button 
-                onClick={()=> history.push("/Proposals")}
-                style={{background: "#2F51C9", 
-                        color: "#ffffff",
-                        padding: "5" }}
+                    <h4 style={{margin: "20px 0", fontWeight: "400"}}>View a list of all the active proposals in the community and vote to support it! Click on a proposal to view details, relevant documents, and leave comments.</h4>
+                <Button 
+                //onClick={()=> history.push("/proposals")}
+                style={buttonStyle}
                 className={"hoverzoom"}
                 >VIEW PROPOSALS </Button>
         </div>
@@ -116,13 +128,11 @@ export default function Welcome() {
                      marginLeft: "100px",
                      display: "inline-block"}}>
                     <h2>FINANCES</h2>
-                    <h4>Pay your community dues, view your total community fund, and submit proposals to your community.</h4>
+                    <h4 style={{margin: "20px 0", fontWeight: "400"}}>Pay your community dues, view your total community fund, and submit proposals to your community.</h4>
                     <Button 
                 onClick={()=>{
                 console.log("join community fund")}}
-                style={{background: "#2F51C9", 
-                        color: "#ffffff",
-                        padding: "5" }}
+                style={buttonStyle}
                 className={"hoverzoom"}
                 >VIEW DASHBOARD </Button>
         </div>
@@ -139,13 +149,11 @@ export default function Welcome() {
                      marginRight: "100px",
                      display: "inline-block"}}>
                     <h2>COMMUNITY MEMBERS</h2>
-                    <h4>VView a list of all current community members, and add new members to the community.</h4>
+                    <h4 style={{margin: "20px 0", fontWeight: "400"}}>View a list of all current community members, and add new members to the community.</h4>
                     <Button 
                 onClick={()=>{
                 console.log("join community fund")}}
-                style={{background: "#2F51C9", 
-                        color: "#ffffff",
-                        padding: "5" }}
+                style={buttonStyle}
                 className={"hoverzoom"}
                 >VIEW MEMBERS </Button>
         </div>

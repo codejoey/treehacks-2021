@@ -6,6 +6,18 @@ import { Button, Card, Input, Divider } from "antd";
 import "./Welcome.css";
 export default function Members() {
 
+    const buttonStyle = {
+        backgroundColor: "#2F43F5",
+        width: "fit-content",
+        height: "fit-content",
+        fontSize: "16px",
+        border: "none",
+        borderRadius: "50px",
+        color: "#fff",
+        padding: "0.5rem 1.5rem",
+        cursor: "pointer"
+      }
+
     const cardStyle = {
         boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
         width: "80%",
@@ -66,9 +78,7 @@ export default function Members() {
         <div style={{margin:8}}>
           <Input onChange={()=>{console.log("input member")}} 
                  style={{marginBottom: "30px"}}/>
-          <Button style={{background: "#2F51C9", 
-                        color: "#ffffff",
-                        padding: "5" }}
+          <Button style={buttonStyle}
             onClick={()=>{
             console.log("add new member")
             /* look how you call setPurpose on your contract: */

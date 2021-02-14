@@ -11,3 +11,4 @@ html, body, #root {
   flex-direction: column;
 }
 
+html { height: 100%; }

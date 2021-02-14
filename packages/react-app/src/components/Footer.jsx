@@ -6,8 +6,9 @@ import React from "react";
 export default function Footer() {
   return (
     <div style={{background: "#F5F9FF",
-    marginTop: "70px",
-    height: "fit-content"
+    //position: "absolute", bottom: "0", left: "0",
+    height: "fit-content",
+    minWidth: "100px"
     }}>
 
 
