@@ -11,7 +11,7 @@ export default function Proposals() {
   const [loading, setLoading] = useState(true);
   const [proposals, setProposals] = useState([]);
   const cardStyle = {
-    boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
     width: "100%",
     height: "15rem",
     margin: "1rem",
@@ -28,25 +28,7 @@ export default function Proposals() {
           author: "Jeff Smith",
           approval: 60,
           requiredFunds: 1000,
-          description: `The purpose of the Plan is to achieve a mix of land uses, develop a form based design code, improve
-          transportation and pedestrian circulation, transportation options, and to enhance the streetscape and
-          appearance of the corridor through urban design techniques.
-          
-          For purpose of the RFP, the consultant is to provide a detailed work plan describing the process and the
-          methodology to be employed in deriving the information requested. The City anticipates refinement of
-          the final scope of services based on additional information contained in the responses to this RFP or
-          information from the presentations made to the Corridor Staff Team by the finalists.
-          
-          The City of Rockville occupies 13.44 square miles within the Metropolitan Washington, DC area and is
-          located 12 miles northwest of Washington. Rockville had a population estimate of approximately 57,100
-          according to the 2004 Census estimates.
-          
-          The City of Rockville operates under the council/manager form of municipal government and derives its
-          authority from a charter granted by the State of Maryland. As mandated by state law, Montgomery
-          County provides school and health services in Rockville. The City has an employment base of
-          approximately 80,059 jobs (2005 estimate, MWCOG Round 7 Forecast projection). The City has
-          undergone tremendous redevelopment and infill development in recent years, including an ongoing
-          redevelopment of the Town Center.`,
+          description: `The purpose of this plan is to promote and recognize the value of our campus trees. According to trees.standford.edu, there has been loss of diversity from the original tree and shrub plantings of the 1880s and 1890s, which is well-documented for conifers. Over the past quarter century there has also been a loss of eucalypt species, from over 125 species present in the early 1970s to fifty-one today. The school is already doing a superb restoration of the Arizona Garden, but we want to expand that for a broader restoration of the remaining areas of campus.`,
           image: "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218.jpg"
         },
         {
@@ -104,8 +86,8 @@ export default function Proposals() {
                     top: "0",
                     left: "0",
                     height: "4px",
-                    borderRadius: "4px",
-                    backgroundColor: "#E8E6E6",
+                    borderRadius: "4px 0 0 0",
+                    backgroundColor: "#ed4637",
                     width: "100%"
                   }} />
                   <div data-sal="slide-right" data-sal-delay={i*100} data-sal-duration="1200" style={{
@@ -113,9 +95,10 @@ export default function Proposals() {
                     top: "0",
                     left: "0",
                     height: "4px",
-                    borderRadius: "4px",
-                    backgroundColor: "#2F43F5",
-                    width: `${p.approval}%`
+                    borderRadius: "4px 0 0 0",
+                    backgroundColor: "#51cf5d",
+                    width: `${p.approval}%`,
+                    opacity: 1
                   }} />
                   <div
                     style={{
