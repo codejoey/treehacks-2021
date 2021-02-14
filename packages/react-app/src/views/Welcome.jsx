@@ -17,7 +17,7 @@ export default function Welcome() {
         margin: "0.5rem"
         };
         
-        useEffect(sal, [])
+  useEffect(sal, [])
 
   const history = useHistory();
 
@@ -37,7 +37,7 @@ export default function Welcome() {
       <div>
     <div style={{ background: "#F5F9FF" }}>
         <div style={{width: "fit-content",
-                     margin: "30px auto"}}>
+                     margin: "0px auto"}}>
         <div style={{textAlign: "left",
                      //marginLeft: "12vw",
                      paddingBottom: "100px",

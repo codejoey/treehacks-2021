@@ -4,6 +4,10 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { Button, Card, Input, Divider } from "antd";
 import "./Welcome.css";
+import sal from "sal.js";
+import "sal.js/dist/sal.css";
+
+
 export default function Members() {
 
     const buttonStyle = {
@@ -17,6 +21,7 @@ export default function Members() {
         padding: "0.5rem 1.5rem",
         cursor: "pointer"
       }
+
 
     const cardStyle = {
         boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
@@ -68,9 +73,7 @@ export default function Members() {
 
   return (
     <div style={{ padding: "2rem 6rem", textAlign: "center" }}>
-        <Card data-sal="slide-up"
-        data-sal-delay="200"
-        data-sal-duration="800"
+        <Card 
         style={cardStyle}>
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Nominate Members</h4>
@@ -90,9 +93,8 @@ export default function Members() {
 
         </Card>
 
-        <Card data-sal="slide-up"
-        data-sal-delay="300"
-        data-sal-duration="900"
+        <Card 
+
         style={cardStyle}>
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Active Members</h4>
