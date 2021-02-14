@@ -8,7 +8,7 @@ import greeneryMap from "./map_greenery.png";
 
 export default function Explore() {
   const cardStyle = {
-    boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
     width: "45%",
     margin: "1rem",
     borderRadius: "6px",
@@ -42,7 +42,7 @@ export default function Explore() {
           width: "30%",
           fontSize: "16px",
           border: "none",
-          borderRadius: "50px",
+          borderRadius: "6px",
           color: "#fff",
           padding: "1rem",
           cursor: "pointer",

@@ -8,38 +8,23 @@ import "sal.js/dist/sal.css";
 export default function Finance() {
   const [loading, setLoading] = useState(true);
   const cardHalfStyle = {
-    boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
     width: "42%",
     display: "inline-block",
     margin: "0.5rem"
   };
   const cardWholeStyle = {
-    boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
     width: "85%",
     display: "inline-block",
     margin: "0.5rem"
   };
-  // 13/02/2020  +$100 BlockFund Protocol Fee -$2,500
-  const columns = ["Date", "Name", "Amount"];
-  const colummSizes = [20, 60, 20];
-  const tableData = [
-    {
-      date: "13/02/2020",
-      name: "Scott Moses Sunarto Membership Payment",
-      amount: "100"
-    },
-    {
-      date: "13/02/2020",
-      name: "Palo Alto Fund Protocol Fee",
-      amount: "-2500"
-    }
-  ];
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 400);
-    sal({ threshold: 0.4 });
+    sal({ threshold: 0 });
   }, []);
 
   return (
@@ -48,7 +33,7 @@ export default function Finance() {
         data-sal="slide-up"
         data-sal-duration="800"
       >
-        Overview
+        Financial Overview
       </h1>
       <div>
         <Card
@@ -57,7 +42,7 @@ export default function Finance() {
           data-sal-duration="800"
           style={cardHalfStyle}
         >
-          <h3 style={{ opacity: 0.5 }}>Your Community Dues</h3>
+          <h2>Your Community Dues</h2>
           <h1 style={{ fontSize: "72px" }}>$25</h1>
           <h3 style={{ opacity: 0.5 }}>Last payment: January 2021</h3>
           <button
@@ -66,7 +51,7 @@ export default function Finance() {
               width: "100%",
               fontSize: "16px",
               border: "none",
-              borderRadius: "50px",
+              borderRadius: "6px",
               color: "#fff",
               padding: "1rem",
               cursor: "pointer",
@@ -82,7 +67,7 @@ export default function Finance() {
           data-sal-duration="800"
           style={cardHalfStyle}
         >
-          <h3 style={{ opacity: 0.5 }}>Your Community Fund</h3>
+          <h2>Your Community Fund</h2>
           <h1 style={{ fontSize: "72px" }}>$2500</h1>
           <h3 style={{ opacity: 0.5 }}>10% increase this month</h3>
           <button
@@ -91,7 +76,7 @@ export default function Finance() {
               width: "100%",
               fontSize: "16px",
               border: "none",
-              borderRadius: "50px",
+              borderRadius: "6px",
               color: "#fff",
               padding: "1rem",
               cursor: "pointer",
@@ -118,7 +103,8 @@ export default function Finance() {
               <div style={{ width: "20%", display: "inline-block" }}><h4>Amount</h4></div>
             </div>
             <div
-              data-sal="slide-right"
+              data-sal="slide-up"
+              data-sal-delay="400"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -127,7 +113,8 @@ export default function Finance() {
               <div style={{ width: "20%", display: "inline-block" }}><h4 style={{ color: "green" }}>+$100</h4></div>
             </div>
             <div
-              data-sal="slide-right"
+              data-sal="slide-up"
+              data-sal-delay="500"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -136,7 +123,8 @@ export default function Finance() {
               <div style={{ width: "20%", display: "inline-block" }}><h4 style={{ color: "red" }}>-$2,500</h4></div>
             </div>
             <div
-              data-sal="slide-right"
+              data-sal="slide-up"
+              data-sal-delay="600"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -145,7 +133,8 @@ export default function Finance() {
               <div style={{ width: "20%", display: "inline-block" }}><h4 style={{ color: "green" }}>+$100</h4></div>
             </div>
             <div
-              data-sal="slide-right"
+              data-sal="slide-up"
+              data-sal-delay="700"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -155,7 +144,6 @@ export default function Finance() {
             </div>
           </div>
         </Card>
-        <div style={{height: "40rem"}} />
       </div>
     </div>
   );

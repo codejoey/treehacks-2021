@@ -11,20 +11,19 @@ import "sal.js/dist/sal.css";
 export default function Members() {
 
     const buttonStyle = {
-        backgroundColor: "#2F43F5",
-        width: "fit-content",
-        height: "fit-content",
-        fontSize: "16px",
+        background: "rgb(47, 67, 245)",
         border: "none",
-        borderRadius: "50px",
+        width: "33%",
+        fontSize: "16px",
+        borderRadius: "6px",
         color: "#fff",
-        padding: "0.5rem 1.5rem",
+        padding: "1rem",
         cursor: "pointer"
       }
 
 
     const cardStyle = {
-        boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+      boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
         width: "80%",
         margin: "1rem",
         borderRadius: "6px",
@@ -39,7 +38,7 @@ export default function Members() {
     useEffect(() => {
         setMembers([
         {
-            id: "0xea23c259b637f72D80697D4A4D1302df9f64530B",
+            id: "0xD4A4D1302dea23c259b637f72D80697f9f64530B",
             name: "Magdeline",
             age: "26",
         },
@@ -49,24 +48,24 @@ export default function Members() {
             age: "28",
         },
         {
-            id: "0xea23c259b637f72D80697D4A4D1302df9f64530B",
-            name: "Simon",
+            id: "0x72D80697D4A4D1302dfea23c259b637f9f64530B",
+            name: "James",
+            age: "22",
+        },
+        {
+            id: "0x1302df9f64530ea23c259b637f72D80697D4A4DB",
+            name: "Jane",
+            age: "23",
+        },
+        {
+            id: "0xb637f72D80697D4A4D1302df9f6453ea23c2590B",
+            name: "Rami",
             age: "28",
         },
         {
-            id: "0xea23c259b637f72D80697D4A4D1302df9f64530B",
-            name: "Simon",
-            age: "28",
-        },
-        {
-            id: "0xea23c259b637f72D80697D4A4D1302df9f64530B",
-            name: "Simon",
-            age: "28",
-        },
-        {
-            id: "0xea23c259b637f72D80697D4A4D1302df9f64530B",
-            name: "Simon",
-            age: "28",
+            id: "0x9b637f72Dea23c2580697D4A4D1302df9f64530B",
+            name: "Salma",
+            age: "29",
         }
         ]);
     }, []);
@@ -84,11 +83,11 @@ export default function Members() {
         <div style={{margin:8}}>
           <Input onChange={()=>{console.log("input member")}} 
                  style={{marginBottom: "30px"}}/>
-          <Button style={buttonStyle}
+          <button style={buttonStyle}
             onClick={()=>{
             console.log("add new member")
             /* look how you call setPurpose on your contract: */
-          }}>Nominate</Button>
+          }}>Nominate</button>
         </div>
 
         </Card>
