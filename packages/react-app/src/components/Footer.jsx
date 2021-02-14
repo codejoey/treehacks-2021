@@ -5,16 +5,26 @@ import React from "react";
 
 export default function Footer() {
   return (
-            <div style={{background: "#F5F9FF",
-            //position:"absolute",
-            //left:"0",
-            //bottom:"0",
-            //right:"0",
-            //marginTop: "40px"
-            marginTop: "auto"
-        }}>
-            <h1>HELLO</h1>
-            
-            </div>
+    <div style={{background: "#F5F9FF",
+    marginTop: "70px",
+    height: "fit-content"
+    }}>
+
+
+
+    <div style={{width: "100%",
+    display: "inline-block",}}>
+    <img src={require('../PAFlogo.png')}
+          style={{maxWidth : "100px",
+                  maxHeight: "100px",
+                  float: "right",
+                  marginTop: "30px",
+                  marginRight: "60px"}}/>
+    </div>
+
+    <h3>© Palo Alto Fund 2021 - All Rights Reserved</h3>
+
+
+    </div>
   );
 }
