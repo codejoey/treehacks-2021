@@ -160,7 +160,7 @@ export default function Proposal({ match }) {
                   data-sal-duration="800"
                   style={{
                     backgroundColor: "#2F43F5",
-                    width: "100%",
+                    width: "49%",
                     fontSize: "16px",
                     border: "none",
                     borderRadius: "50px",
@@ -169,12 +169,29 @@ export default function Proposal({ match }) {
                     cursor: "pointer"
                   }}
                 >
-                  Approve Proposal
+                  Yay
+                </button>
+                <button
+                  data-sal="fade"
+                  data-sal-duration="800"
+                  style={{
+                    background: "none",
+                    border: "solid 2px #2F43F5",
+                    width: "49%",
+                    fontSize: "16px",
+                    borderRadius: "50px",
+                    color: "#2F43F5",
+                    padding: "1rem",
+                    cursor: "pointer",
+                    marginLeft: "1%"
+                  }}
+                >
+                  Nay
                 </button>
               </div>
             </Card>
           </div>
-          <div style={{ marginTop: "4rem", filter: "hue-rotate(100deg) saturate(2)" }}>
+          <div style={{ marginTop: "4rem", padding: "0 7rem", filter: "hue-rotate(100deg) saturate(2)" }}>
             <div className="commentbox"></div>
           </div>
         </div>
