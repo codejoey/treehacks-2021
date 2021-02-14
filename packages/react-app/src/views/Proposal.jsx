@@ -11,7 +11,6 @@ export default function Proposal({ match, useContractReader, readContracts, writ
   const proposal1 = useContractReader(readContracts, "BlockFundDAO", "proposals", "1");
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
-  // const [proposals, setProposals] = useState([]);
   const [proposal, setProposal] = useState({});
   const inputRef = useRef(null);
   const { id } = match.params;
@@ -64,7 +63,7 @@ export default function Proposal({ match, useContractReader, readContracts, writ
     } else if (num > 0 && denom === 0) {
       return 100;
     } else {
-      return 100 * num / denom;
+      return (100 * num) / denom;
     }
   };
 
@@ -100,30 +99,19 @@ export default function Proposal({ match, useContractReader, readContracts, writ
             >
               <div style={{ textAlign: "left", padding: "1rem 6rem 4rem" }}>
                 <h1 style={{ fontSize: "3rem" }}>{proposal.title}</h1>
-                <h3>
-                  Community Sponsor
-                </h3>
+                <h3>Community Sponsor</h3>
+                <h1>Scott Moses Sunarto ({proposal.sponsor?.substr(0, 8)}...)</h1>
+                <br />
+                <h3>Requested Fund</h3>
                 <h1>
-                  Jeffrey Smith ({proposal.sponsor?.substr(0,6)})
+                  {parseInt(proposal.requestedFund) / 1e18} DAI{" "}
+                  <span style={{ opacity: 0.25 }}>(~${parseInt(proposal.requestedFund) / 1e18})</span>
                 </h1>
                 <br />
-                <h3>
-                  Requested Fund
-                </h3>
-                <h1>
-                  {parseInt(proposal.requestedFund) / 1e18} DAI <span style={{ opacity: 0.25 }}>(~${parseInt(proposal.requestedFund) / 1e18})</span>
-                </h1>
+                <h3>Purpose</h3>
+                <p>{proposal.description}</p>
                 <br />
-                <h3>
-                  Purpose
-                </h3>
-                <p>
-                  {proposal.description}
-                </p>
-                <br />
-                <h3>
-                  Questions and Answers
-                </h3>
+                <h3>Questions and Answers</h3>
                 <Input ref={inputRef} placeholder="Your question here" onKeyUp={inputCapture} />
                 {loading ? (
                   <div style={{ marginTop: "1rem", textAlign: "center" }}>
@@ -133,9 +121,7 @@ export default function Proposal({ match, useContractReader, readContracts, writ
                   answer && <p style={{ marginTop: "1rem", opacity: 0.5 }}>{answer}</p>
                 )}
                 <hr style={{ opacity: 0.25, margin: "3rem 0" }} />
-                <h1>
-                  Current Vote
-                </h1>
+                <h1>Current Vote</h1>
                 <p>
                   Your vote in this proposal will hold <b>2.5x</b> as much power.
                 </p>

@@ -203,8 +203,7 @@ function App(props) {
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
-      <Header />
-      {networkDisplay}
+      <Header networkDisplay={targetNetwork.name} />
       <BrowserRouter>
         <Menu style={{ textAlign: "center" }} selectedKeys={[route]} mode="horizontal">
           <Menu.Item key="/">
@@ -285,10 +284,7 @@ function App(props) {
             <Welcome />
           </Route>
           <Route path="/proposals">
-            <Proposals
-              useContractReader={useContractReader}
-              readContracts={readContracts}
-            />
+            <Proposals useContractReader={useContractReader} readContracts={readContracts} />
           </Route>
           <Route
             path="/proposal/:id"
@@ -320,8 +316,20 @@ function App(props) {
         </Switch>
       </BrowserRouter>
 
+      <Footer />
+
       {/* 👨‍💼 Your account is in the top right with a wallet at connect options */}
-      <div style={{ position: "fixed", textAlign: "right", right: 0, top: 0, padding: 10 }}>
+      <div
+        style={{
+          position: "fixed",
+          textAlign: "right",
+          right: 0,
+          bottom: 0,
+          padding: 10,
+          backgroundColor: "#FFFFFF",
+          boxShadow: "0px 5px 15px rgba(0, 0, 0, 8%)",
+        }}
+      >
         <Account
           address={address}
           localProvider={localProvider}
@@ -335,6 +343,7 @@ function App(props) {
         />
         {faucetHint}
       </div>
+
       {/* 🗺 Extra UI like gas price, eth price, faucet, and support: */}
       <div style={{ position: "fixed", textAlign: "left", left: 0, bottom: 20, padding: 10 }}>
         <Row align="middle" gutter={[4, 4]}>
@@ -374,7 +383,6 @@ function App(props) {
           </Col>
         </Row>
       </div>
-      <Footer />
     </div>
   );
 }
