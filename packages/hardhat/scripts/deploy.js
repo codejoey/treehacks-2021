@@ -6,19 +6,19 @@ const { utils } = require("ethers");
 const R = require("ramda");
 
 const main = async () => {
-
   console.log("\n\n 📡 Deploying...\n");
 
-
-  const yourContract = await deploy("YourContract") // <-- add in constructor args like line 19 vvvv
+  const yourContract = await deploy("BlockFundDAO", [
+    "0xAF88C0B251D22B4B4ec0b4a2935411D84Bfe3Fc8",
+    "0x00000bbfea6268C402eB1dB0289Cc08d4ac10e7E",
+    "0xbA1E24BB66BCd38663e7dd7931e01381085a4325",
+  ]); // <-- add in constructor args like line 19 vvvv
 
   //const secondContract = await deploy("SecondContract")
 
   // const exampleToken = await deploy("ExampleToken")
   // const examplePriceOracle = await deploy("ExamplePriceOracle")
   // const smartContractWallet = await deploy("SmartContractWallet",[exampleToken.address,examplePriceOracle.address])
-
-
 
   /*
   //If you want to send value to an address from the deployer
@@ -29,14 +29,12 @@ const main = async () => {
   })
   */
 
-
   /*
   //If you want to send some ETH to a contract on deploy (make your constructor payable!)
   const yourContract = await deploy("YourContract", [], {
   value: ethers.utils.parseEther("0.05")
   });
   */
-
 
   /*
   //If you want to link a library into your contract:
@@ -46,36 +44,32 @@ const main = async () => {
   });
   */
 
-
-  console.log(
-    " 💾  Artifacts (address, abi, and args) saved to: ",
-    chalk.blue("packages/hardhat/artifacts/"),
-    "\n\n"
-  );
+  console.log(" 💾  Artifacts (address, abi, and args) saved to: ", chalk.blue("packages/hardhat/artifacts/"), "\n\n");
 };
 
 const deploy = async (contractName, _args = [], overrides = {}, libraries = {}) => {
   console.log(` 🛰  Deploying: ${contractName}`);
 
   const contractArgs = _args || [];
-  const contractArtifacts = await ethers.getContractFactory(contractName,{libraries: libraries});
+  const contractArtifacts = await ethers.getContractFactory(contractName, {
+    libraries: libraries,
+  });
   const deployed = await contractArtifacts.deploy(...contractArgs, overrides);
   const encoded = abiEncodeArgs(deployed, contractArgs);
   fs.writeFileSync(`artifacts/${contractName}.address`, deployed.address);
 
-  console.log(
-    " 📄",
-    chalk.cyan(contractName),
-    "deployed to:",
-    chalk.magenta(deployed.address),
-  );
+  const prop1tx = await deployed.createProposal("Buy more dogs", "cos i like dogs", "https://google.com", 123123123);
+  const prop2tx = await deployed.createProposal("Buy more cats", "cos i like cats", "https://google.com", 123123123);
+  console.log(prop1tx);
+  console.log(prop2tx);
+
+  const tx = console.log(" 📄", chalk.cyan(contractName), "deployed to:", chalk.magenta(deployed.address));
 
   if (!encoded || encoded.length <= 2) return deployed;
   fs.writeFileSync(`artifacts/${contractName}.args`, encoded.slice(2));
 
   return deployed;
 };
-
 
 // ------ utils -------
 
@@ -84,25 +78,18 @@ const deploy = async (contractName, _args = [], overrides = {}, libraries = {}) 
 // for example, on Etherscan
 const abiEncodeArgs = (deployed, contractArgs) => {
   // not writing abi encoded args if this does not pass
-  if (
-    !contractArgs ||
-    !deployed ||
-    !R.hasPath(["interface", "deploy"], deployed)
-  ) {
+  if (!contractArgs || !deployed || !R.hasPath(["interface", "deploy"], deployed)) {
     return "";
   }
-  const encoded = utils.defaultAbiCoder.encode(
-    deployed.interface.deploy.inputs,
-    contractArgs
-  );
+  const encoded = utils.defaultAbiCoder.encode(deployed.interface.deploy.inputs, contractArgs);
   return encoded;
 };
 
 // checks if it is a Solidity file
-const isSolidity = (fileName) =>
+const isSolidity = fileName =>
   fileName.indexOf(".sol") >= 0 && fileName.indexOf(".swp") < 0 && fileName.indexOf(".swap") < 0;
 
-const readArgsFile = (contractName) => {
+const readArgsFile = contractName => {
   let args = [];
   try {
     const argsFile = `./contracts/${contractName}.args`;
@@ -120,7 +107,7 @@ function sleep(ms) {
 
 main()
   .then(() => process.exit(0))
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
     process.exit(1);
   });
