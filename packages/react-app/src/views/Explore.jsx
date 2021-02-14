@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "antd";
 import sal from "sal.js";
 import "sal.js/dist/sal.css";
 import "./Explore.css";
-import demoMap from "./map_demographics.png";
-import greeneryMap from "./map_greenery.png";
+import demoMap from "./demographics.png";
+import greeneryMap from "./greenery.png";
 
 export default function Explore() {
   const cardStyle = {
@@ -53,27 +54,29 @@ export default function Explore() {
       </button>
       <br />
       <div>
-        <Card
-          data-sal="slide-up"
-          data-sal-delay="200"
-          data-sal-duration="800"
-          style={cardStyle}
-          cover={<img src={greeneryMap} />}
-        >
-          <h1>Greenery Map</h1>
-          <p>Lorem ipsum dolor sit amet.</p>
-        </Card>
-        <Card
-          data-sal="slide-up"
-          data-sal-delay="300"
-          data-sal-duration="800"
-          style={cardStyle}
-          cover={<img src={demoMap} />}
-        >
-          <h1>Demographics Map</h1>
-          <p>Lorem ipsum dolor sit amet.</p>
-        </Card>
-        <div style={{height: "40rem"}} />
+        <Link to="/community-greenery">
+          <Card
+            data-sal="slide-up"
+            data-sal-delay="200"
+            data-sal-duration="800"
+            style={cardStyle}
+            cover={<div style={{ backgroundImage: `url(${greeneryMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
+          >
+            <h1>Greenery Map</h1>
+          </Card>
+        </Link>
+        <Link to="/community-diversity">
+          <Card
+            data-sal="slide-up"
+            data-sal-delay="300"
+            data-sal-duration="800"
+            style={cardStyle}
+            cover={<div style={{ backgroundImage: `url(${demoMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
+          >
+            <h1>Demographics Map</h1>
+          </Card>
+        </Link>
+        <div style={{height: "10rem"}} />
       </div>
     </div>
   );
