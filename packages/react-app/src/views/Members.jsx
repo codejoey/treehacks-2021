@@ -23,7 +23,7 @@ export default function Members() {
 
 
     const cardStyle = {
-      boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
+        boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
         width: "80%",
         margin: "1rem",
         borderRadius: "6px",
