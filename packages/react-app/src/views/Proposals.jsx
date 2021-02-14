@@ -55,7 +55,7 @@ export default function Proposals() {
               <Skeleton active />
             </Card>
           )*/}
-          <Spin size="large" />
+          <Spin size="large" style={{ margin: "16rem 0" }} />
         </div>
       ) : (
         <div style={{ textAlign: "left" }}>
