@@ -39,7 +39,7 @@ export default function Finance() {
     setTimeout(() => {
       setLoading(false);
     }, 400);
-    sal();
+    sal({ threshold: 0.4 });
   }, []);
 
   return (
@@ -119,7 +119,6 @@ export default function Finance() {
             </div>
             <div
               data-sal="slide-right"
-              data-sal-delay="500"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -129,7 +128,6 @@ export default function Finance() {
             </div>
             <div
               data-sal="slide-right"
-              data-sal-delay="600"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -139,7 +137,6 @@ export default function Finance() {
             </div>
             <div
               data-sal="slide-right"
-              data-sal-delay="700"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
@@ -149,7 +146,6 @@ export default function Finance() {
             </div>
             <div
               data-sal="slide-right"
-              data-sal-delay="800"
               data-sal-duration="800"
               style={{ width: "100%", padding: "0.75rem 0" }}
             >
