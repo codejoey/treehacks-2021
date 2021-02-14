@@ -51,7 +51,8 @@ export default function Welcome() {
                         fontSize: "65px",
                         fontWeight: "800"}}>Palo Alto Fund</h1>
             <h4 style={{color: "#2F51C9",
-                        marginBottom: "30px"}}>powered by BlockFund</h4>
+                        marginBottom: "30px",
+                        marginTop: "-20px"}}>powered by BlockFund</h4>
             <h4 style={{fontWeight: "400",
                         marginBottom: "30px"}}>A fully decentralized community governance platform powered by blockchain technology.</h4>
 
@@ -110,6 +111,10 @@ export default function Welcome() {
         title="Step 1: Pay Monthly Fees"
         style={cardStyle}
       >
+        <img src={require('../coin.png')}
+                style={{maxWidth : "100px",
+                maxHeight: "100px",
+                marginBottom: "20px"}}/>
         <p>Pay your monthly fees to the community to maintain and better your community.</p>
       </Card>
       <Card
@@ -119,6 +124,10 @@ export default function Welcome() {
         title="Step 2: Submit Proposals"
         style={cardStyle}
       >
+        <img src={require('../contract.png')}
+        style={{maxWidth : "100px",
+        maxHeight: "100px",
+        marginBottom: "20px"}}/>
         <p>Dream up the improvements you would like to see in your community and submit a proposal.</p>
       </Card>
       <Card
@@ -128,7 +137,11 @@ export default function Welcome() {
         title="Step 3: Vote For Proposals"
         style={cardStyle}
       >
-        <p>Everyone in the community can vote "yes" or "no" to every proposal.</p>
+        <img src={require('../online-voting.png')}
+        style={{maxWidth : "100px",
+        maxHeight: "100px",
+        marginBottom: "20px"}}/>
+        <p>Everyone in the community can vote "yes" or "no" to every proposal.</p><br></br>
       </Card>
       </div>
     </div>
@@ -136,7 +149,6 @@ export default function Welcome() {
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="800"
-        className={"hoverzoom"} 
         style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
@@ -169,8 +181,7 @@ export default function Welcome() {
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="900"
-        className={"hoverzoom"} 
-        className={"hoverzoom"} style={{textAlign: "left",
+        style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
@@ -205,8 +216,7 @@ export default function Welcome() {
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="900"
-        className={"hoverzoom"} 
-        className={"hoverzoom"} style={{textAlign: "left",
+        style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
