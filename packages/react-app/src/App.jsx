@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge, Footer } from "./com
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Proposals, Process, Welcome, Proposal, Members } from "./views"
+import { Hints, ExampleUI, Proposals, Finance, Explore, Welcome, Proposal, Members } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -195,25 +195,28 @@ function App(props) {
           <Menu.Item key="/welcome">
             <Link onClick={()=>{setRoute("/welcome")}} to="/welcome">Welcome</Link>
           </Menu.Item>
-          <Menu.Item key="/">
-            <Link onClick={()=>{setRoute("/")}} to="/">YourContract</Link>
-          </Menu.Item>
-          <Menu.Item key="/hints">
-            <Link onClick={()=>{setRoute("/hints")}} to="/hints">Hints</Link>
-          </Menu.Item>
-          <Menu.Item key="/exampleui">
-            <Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
-          </Menu.Item>
+
           <Menu.Item key="/proposals">
             <Link onClick={()=>{setRoute("/proposals")}} to="/proposals">Proposals</Link>
           </Menu.Item>
-          <Menu.Item key="/process">
-            <Link onClick={()=>{setRoute("/process")}} to="/process">Process</Link>
+          <Menu.Item key="/finance">
+            <Link onClick={()=>{setRoute("/finance")}} to="/finance">Finance</Link>
+          </Menu.Item>  
+          <Menu.Item key="/explore">
+            <Link onClick={()=>{setRoute("/explore")}} to="/explore">Explore</Link>
           </Menu.Item>
           <Menu.Item key="/members">
             <Link onClick={()=>{setRoute("/members")}} to="/members">Members</Link>
           </Menu.Item>
-
+          {/* <Menu.Item key="/hints">
+            <Link onClick={()=>{setRoute("/hints")}} to="/hints">Hints</Link>
+          </Menu.Item> */}
+          {/* <Menu.Item key="/">
+            <Link onClick={()=>{setRoute("/")}} to="/">YourContract</Link>
+          </Menu.Item> */}
+          <Menu.Item key="/exampleui">
+            <Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
+          </Menu.Item>
         </Menu>
 
 
@@ -285,8 +288,11 @@ function App(props) {
             <Proposals />
           </Route>
           <Route path="/proposal/:id" component={Proposal} />
-          <Route path="/process">
-            <Process />
+          <Route path="/finance">
+            <Finance />
+          </Route>
+          <Route path="/explore">
+            <Explore />
           </Route>
           <Route path="/Members">
             <Members />
