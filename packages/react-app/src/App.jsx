@@ -358,7 +358,7 @@ function App(props) {
          </Row>
        </div>
       */}
-    <Footer/>
+      <Footer/>
     </div>
   );
 }
