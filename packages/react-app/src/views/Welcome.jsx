@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import { Button } from "antd";
+import { Button, Card } from "antd";
 import "./Welcome.css";
 import sal from "sal.js";
 import "sal.js/dist/sal.css";
@@ -10,6 +10,14 @@ import "sal.js/dist/sal.css";
 
 export default function Welcome() {
 
+  const cardStyle = {
+        boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+        width: "23%",
+        display: "inline-block",
+        margin: "0.5rem"
+        };
+        
+        useEffect(sal, [])
 
   const history = useHistory();
 
@@ -73,11 +81,69 @@ export default function Welcome() {
     <div style={{textAlign: "center",
                  margin: "60px auto",
                  width: "50vw"}}>
-    <h1>What is BlockFund?</h1>
-    <h4 style={{fontWeight: "400"}}>BlockFund is a decentralised autonomous organisation which democratises community funds. BlockFund allows residents to vote for a project they want in a transparent process. BlockFund highlights the need for environment sustainability projects through ArcGIS mapping, and aids civilians/government to plan a community through cultural urban planning</h4>
+    <h1         data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="800">What is BlockFund?</h1>
+    <h4         data-sal="slide-up"
+        data-sal-delay="300"
+        data-sal-duration="900" style={{fontWeight: "400"}}>BlockFund is a decentralised autonomous organisation which democratises community funds. BlockFund allows residents to vote for a project they want in a transparent process. BlockFund highlights the need for environment sustainability projects through ArcGIS mapping, and aids civilians/government to plan a community through cultural urban planning</h4>
     </div >
+
+    <div style={{ padding: "2rem 6rem" }}>
+      <h1
+        data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="800"
+      >How does BlockFund work?</h1>
+      <h3
+        data-sal="slide-up"
+        data-sal-delay="300"
+        data-sal-duration="900"
+        style={{ marginBottom: "2rem" }}
+      >in <span style={{ color: "#4190f7" }}>four</span> simple steps:</h3>
+      <Card
+        data-sal="slide-up"
+        data-sal-delay="400"
+        data-sal-duration="900"
+        title="Step 1: Submit Proposal"
+        style={cardStyle}
+      >
+        <p>test</p>
+      </Card>
+      <Card
+        data-sal="slide-up"
+        data-sal-delay="500"
+        data-sal-duration="900"
+        title="Step 2: Vote for Proposal"
+        style={cardStyle}
+      >
+        <p>test</p>
+      </Card>
+      <Card
+        data-sal="slide-up"
+        data-sal-delay="600"
+        data-sal-duration="900"
+        title="Step 3: Payment Request"
+        style={cardStyle}
+      >
+        <p>test</p>
+      </Card>
+      <Card
+        data-sal="slide-up"
+        data-sal-delay="700"
+        data-sal-duration="900"
+        title="Step 4: Vote for Payment"
+        style={cardStyle}
+      >
+        <p>test</p>
+      </Card>
+    </div>
     
-    <div className={"hoverzoom"} style={{textAlign: "left",
+    <div data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="800"
+        className={"hoverzoom"} 
+        style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
@@ -106,7 +172,11 @@ export default function Welcome() {
         </div>
     </div>
 
-    <div className={"hoverzoom"} style={{textAlign: "left",
+    <div data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="900"
+        className={"hoverzoom"} 
+        className={"hoverzoom"} style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
@@ -138,7 +208,11 @@ export default function Welcome() {
         </div>
     </div>
     
-    <div className={"hoverzoom"} style={{textAlign: "left",
+    <div data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="900"
+        className={"hoverzoom"} 
+        className={"hoverzoom"} style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",

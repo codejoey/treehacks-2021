@@ -68,7 +68,10 @@ export default function Members() {
 
   return (
     <div style={{ padding: "2rem 6rem", textAlign: "center" }}>
-        <Card style={cardStyle}>
+        <Card data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="800"
+        style={cardStyle}>
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Nominate Members</h4>
         <h4 style={{fontWeight: "400",
@@ -87,7 +90,10 @@ export default function Members() {
 
         </Card>
 
-        <Card style={cardStyle}>
+        <Card data-sal="slide-up"
+        data-sal-delay="300"
+        data-sal-duration="900"
+        style={cardStyle}>
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Active Members</h4>
         <h4 style={{fontWeight: "400",
