@@ -12,12 +12,14 @@ export default function Welcome() {
 
   const cardStyle = {
         boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
-        width: "23%",
+        width: "25%",
         display: "inline-block",
-        margin: "0.5rem"
+        verticalAlign: "top",
+        margin: "0.5rem",
+        background: "#F5F9FF" ,
         };
         
-  useEffect(sal, [])
+        useEffect(sal, [])
 
   const history = useHistory();
 
@@ -33,13 +35,14 @@ export default function Welcome() {
         cursor: "pointer"
       }
 
+  useEffect(() => { sal() }, []);
+
   return (
       <div>
     <div style={{ background: "#F5F9FF" }}>
         <div style={{width: "fit-content",
                      margin: "0px auto"}}>
         <div style={{textAlign: "left",
-                     //marginLeft: "12vw",
                      paddingBottom: "100px",
                      width: "40vw",
                      display: "inline-block",
@@ -100,43 +103,36 @@ export default function Welcome() {
         data-sal-delay="300"
         data-sal-duration="900"
         style={{ marginBottom: "2rem" }}
-      >in <span style={{ color: "#4190f7" }}>four</span> simple steps:</h3>
+      >in <span style={{ color: "#2F51C9" }}>three</span> simple steps:</h3>
+      <div style={{height: "fit-content"}}>
       <Card
         data-sal="slide-up"
         data-sal-delay="400"
         data-sal-duration="900"
-        title="Step 1: Submit Proposal"
+        title="Step 1: Pay Monthly Fees"
         style={cardStyle}
       >
-        <p>test</p>
+        <p>Pay your monthly fees to the community to maintain and better your community.</p>
       </Card>
       <Card
         data-sal="slide-up"
         data-sal-delay="500"
         data-sal-duration="900"
-        title="Step 2: Vote for Proposal"
+        title="Step 2: Submit Proposals"
         style={cardStyle}
       >
-        <p>test</p>
+        <p>Dream up the improvements you would like to see in your community and submit a proposal.</p>
       </Card>
       <Card
         data-sal="slide-up"
         data-sal-delay="600"
         data-sal-duration="900"
-        title="Step 3: Payment Request"
+        title="Step 3: Vote For Proposals"
         style={cardStyle}
       >
-        <p>test</p>
+        <p>Everyone in the community can vote "yes" or "no" to every proposal.</p>
       </Card>
-      <Card
-        data-sal="slide-up"
-        data-sal-delay="700"
-        data-sal-duration="900"
-        title="Step 4: Vote for Payment"
-        style={cardStyle}
-      >
-        <p>test</p>
-      </Card>
+      </div>
     </div>
     
     <div data-sal="slide-up"
