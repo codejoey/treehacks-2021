@@ -59,11 +59,11 @@ export default function Welcome() {
     <h4>We  democratise community funds. Allowing residents to vote for their project they actually want and also in a transparent process.</h4>
     </div >
     
-    <div style={{textAlign: "left",
+    <div className={"hoverzoom"} style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
-                     margin: "0 auto"}}>
+                     margin: "50px auto"}}>
         <div style={{textAlign: "left",
                      paddingTop: "30px",
                      width: "20vw",
@@ -87,16 +87,15 @@ export default function Welcome() {
                     }}>
                 <img src={require('../proposals.png')}
                  style={{maxWidth : "400px",
-                         maxHeight: "200px"}}
-                className={"hoverzoom"}/>
+                         maxHeight: "200px"}}/>
         </div>
     </div>
 
-    <div style={{textAlign: "left",
+    <div className={"hoverzoom"} style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
-                     margin: "0 auto"}}>
+                     margin: "50px auto"}}>
 
         <div style={{textAlign: "left",
                      maxWidth: "40vw",
@@ -106,8 +105,7 @@ export default function Welcome() {
                 <img src={require('../finances.png')}
                  style={{maxWidth : "290px",
                          maxHeight: "200px",
-                         float: "right"}}
-                 className={"hoverzoom"}/>
+                         float: "right"}}/>
         </div>
         <div style={{textAlign: "left",
                      paddingTop: "0px",
@@ -127,11 +125,11 @@ export default function Welcome() {
         </div>
     </div>
     
-    <div style={{textAlign: "left",
+    <div className={"hoverzoom"} style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
-                     margin: "0 auto"}}>
+                     margin: "50px auto"}}>
         <div style={{textAlign: "left",
                      paddingTop: "0px",
                      width: "20vw",
@@ -155,8 +153,7 @@ export default function Welcome() {
                     }}>
                 <img src={require('../members.png')}
                  style={{maxWidth : "260px",
-                         maxHeight: "200px"}}
-                 className={"hoverzoom"}/>
+                         maxHeight: "200px"}}/>
         </div>
     </div>
 
