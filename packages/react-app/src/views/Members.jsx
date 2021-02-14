@@ -22,6 +22,8 @@ export default function Members() {
         cursor: "pointer"
       }
 
+    useEffect(() => { sal({ threshold: 0.2 }) }, []);
+
 
     const cardStyle = {
         boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
@@ -74,7 +76,10 @@ export default function Members() {
   return (
     <div style={{ padding: "2rem 6rem", textAlign: "center" }}>
         <Card 
-        style={cardStyle}>
+        style={cardStyle}
+        data-sal="slide-up"
+        data-sal-delay="200"
+        data-sal-duration="800">
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Nominate Members</h4>
         <h4 style={{fontWeight: "400",
@@ -94,8 +99,10 @@ export default function Members() {
         </Card>
 
         <Card 
-
-        style={cardStyle}>
+        style={cardStyle}
+        data-sal="slide-up"
+        data-sal-delay="300"
+        data-sal-duration="900">
         <h4 style={{color: "#2F51C9",
         marginBottom: "20px"}}>Active Members</h4>
         <h4 style={{fontWeight: "400",
