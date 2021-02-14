@@ -14,6 +14,7 @@ export default function Footer() {
             marginTop: "auto"
         }}>
             <h1>HELLO</h1>
+            
             </div>
   );
 }

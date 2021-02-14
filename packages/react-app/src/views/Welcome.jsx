@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
 import React, { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { Button } from "antd";
 import "./Welcome.css";
 export default function Welcome() {
 
+
+  const history = useHistory();
 
   return (
       <div>
@@ -52,7 +55,8 @@ export default function Welcome() {
 
     </div>
     <div style={{textAlign: "center",
-                 margin: "60px 20vw"}}>
+                 margin: "60px auto",
+                 width: "60vw"}}>
     <h2>Democratized community funds powered by blockchain technology.</h2>
     <h4>A community fund, funded by the community, and spent by the community.</h4>
     <h4>BlockFund is a decentralised autonomous organisation which enables communities & neighbourhoods in funding community projects that actually matter to residents.</h4>
@@ -66,14 +70,13 @@ export default function Welcome() {
                      margin: "50px auto"}}>
         <div style={{textAlign: "left",
                      paddingTop: "30px",
-                     width: "20vw",
+                     width: "30vw",
                      marginRight: "100px",
                      display: "inline-block"}}>
                     <h2>COMMUNITY PROPOSALS</h2>
                     <h4>View a list of all the active proposals in the community and vote to support it! Click on a proposal to view details, relevant documents, and leave comments.</h4>
                     <Button 
-                onClick={()=>{
-                console.log("join community fund")}}
+                onClick={()=> history.push("/Proposals")}
                 style={{background: "#2F51C9", 
                         color: "#ffffff",
                         padding: "5" }}
@@ -109,7 +112,7 @@ export default function Welcome() {
         </div>
         <div style={{textAlign: "left",
                      paddingTop: "0px",
-                     width: "20vw",
+                     width: "30vw",
                      marginLeft: "100px",
                      display: "inline-block"}}>
                     <h2>FINANCES</h2>
@@ -132,7 +135,7 @@ export default function Welcome() {
                      margin: "50px auto"}}>
         <div style={{textAlign: "left",
                      paddingTop: "0px",
-                     width: "20vw",
+                     width: "30vw",
                      marginRight: "100px",
                      display: "inline-block"}}>
                     <h2>COMMUNITY MEMBERS</h2>
