@@ -8,7 +8,7 @@ import "sal.js/dist/sal.css";
 import commentBox from "commentbox.io";
 import axios from "axios";
 
-export default function Proposal({ match }) {
+export default function Proposal({ match, useContractReader, readContracts, writeContracts, tx }) {
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
   const [proposals, setProposals] = useState([]);
@@ -20,7 +20,7 @@ export default function Proposal({ match }) {
     margin: "1rem",
     borderRadius: "6px",
     overflow: "hidden",
-    display: "inline-block"
+    display: "inline-block",
   };
   const inputRef = useRef(null);
   const inputCapture = e => {
@@ -32,20 +32,20 @@ export default function Proposal({ match }) {
           const ans = await axios.post(
             "https://api.openai.com/v1/engines/davinci/completions",
             {
-              "prompt": `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. The assistant is an excellent reader, who is ready to answer questions about the following passage:\n\"\"\"\n${proposal.description}\n\"\"\"\n\nHuman: ${ques}\nAI:`,
-              "max_tokens": 25,
-              "temperature": 0.9,
-              "max_tokens": 50,
-              "top_p": 1,
-              "frequency_penalty": 0,
-              "presence_penalty": 0.6,
-              "stop": ["Human:"]
+              prompt: `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. The assistant is an excellent reader, who is ready to answer questions about the following passage:\n\"\"\"\n${proposal.description}\n\"\"\"\n\nHuman: ${ques}\nAI:`,
+              max_tokens: 25,
+              temperature: 0.9,
+              max_tokens: 50,
+              top_p: 1,
+              frequency_penalty: 0,
+              presence_penalty: 0.6,
+              stop: ["Human:"],
             },
             {
               headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer sk-dEqxyRl2VyQ4bh2yfJxiOVJguOKMJEghoH1qEsrd"
-              }
+                Authorization: "Bearer sk-dEqxyRl2VyQ4bh2yfJxiOVJguOKMJEghoH1qEsrd",
+              },
             },
           );
           setAnswer(ans.data.choices[0].text);
@@ -57,9 +57,19 @@ export default function Proposal({ match }) {
     }
   };
 
+  let proposalId;
+  if (id === "28ae900a-f9f5-4e5f-aceb-062254a80972") {
+    proposalId = "0";
+  } else {
+    proposalId = "1";
+  }
+
+  const proposalObj = useContractReader(readContracts, "BlockFundDAO", "proposals", proposalId);
+  console.log(proposalObj);
+
   useEffect(() => {
     const removeCommentBox = commentBox("5640591161425920-proj");
-    
+
     setProposals([
       {
         id: "28ae900a-f9f5-4e5f-aceb-062254a80972",
@@ -95,8 +105,8 @@ export default function Proposal({ match }) {
         approximately 80,059 jobs (2005 estimate, MWCOG Round 7 Forecast projection). The City has
         undergone tremendous redevelopment and infill development in recent years, including an ongoing
         redevelopment of the Town Center.`,
-        image: "https://thecentraltrend.com/wp-content/uploads/2017/02/stars-900x563.jpg"
-      }
+        image: "https://thecentraltrend.com/wp-content/uploads/2017/02/stars-900x563.jpg",
+      },
     ]);
 
     sal({ threshold: 0.2 });
@@ -108,19 +118,18 @@ export default function Proposal({ match }) {
     if (id && proposals.length) {
       setProposal(proposals.filter(p => p.id === id)[0]);
     }
-  }, [id, proposals])
+  }, [id, proposals]);
 
   return (
     <div style={{ padding: "2rem 6rem", textAlign: "left" }}>
-      <Link to="/proposals" style={{ paddingLeft: "7.9rem" }}>&lt; Back to List</Link>
+      <Link to="/proposals" style={{ paddingLeft: "7.9rem" }}>
+        &lt; Back to List
+      </Link>
       {!proposal ? (
         <p>Proposal not found.</p>
       ) : (
         <div style={{ textAlign: "center" }}>
-          <div
-            data-sal="fade"
-            data-sal-duration="800"
-          >
+          <div data-sal="fade" data-sal-duration="800">
             <Card
               style={cardStyle}
               cover={
@@ -130,67 +139,52 @@ export default function Proposal({ match }) {
                     height: "200px",
                     backgroundImage: `url(${proposal.image})`,
                     backgroundSize: "cover",
-                    backgroundPosition: "center"
+                    backgroundPosition: "center",
                   }}
                 />
               }
             >
               <div style={{ textAlign: "left", padding: "1rem 6rem 4rem" }}>
                 <h1 style={{ fontSize: "3rem" }}>{proposal.title}</h1>
-                <h3
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >
+                <h3 data-sal="fade" data-sal-duration="800">
                   Community Sponsor
                 </h3>
-                <h1
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >{proposal.author} (0x1234)</h1>
+                <h1 data-sal="fade" data-sal-duration="800">
+                  {proposal.author} (0x1234)
+                </h1>
                 <br />
-                <h3
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >Requested Fund</h3>
-                <h1
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >{proposal.requiredFunds} DAI</h1>
+                <h3 data-sal="fade" data-sal-duration="800">
+                  Requested Fund
+                </h3>
+                <h1 data-sal="fade" data-sal-duration="800">
+                  {proposal.requiredFunds} DAI
+                </h1>
                 <br />
-                <h3
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >Purpose</h3>
-                <p
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >{proposal.description}</p>
+                <h3 data-sal="fade" data-sal-duration="800">
+                  Purpose
+                </h3>
+                <p data-sal="fade" data-sal-duration="800">
+                  {proposal.description}
+                </p>
                 <br />
-                <h3
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >Questions and Answers</h3>
+                <h3 data-sal="fade" data-sal-duration="800">
+                  Questions and Answers
+                </h3>
                 <Input ref={inputRef} placeholder="Your question here" onKeyUp={inputCapture} />
                 {loading ? (
-                  <div style={{ marginTop: "1rem", textAlign: "center" }}><Spin /></div>
+                  <div style={{ marginTop: "1rem", textAlign: "center" }}>
+                    <Spin />
+                  </div>
                 ) : (
-                  answer && (
-                    <p style={{ marginTop: "1rem", opacity: 0.5 }}>
-                      {answer}
-                    </p>
-                  )
+                  answer && <p style={{ marginTop: "1rem", opacity: 0.5 }}>{answer}</p>
                 )}
                 <hr style={{ opacity: 0.25, margin: "3rem 0" }} />
-                <h1
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >
+                <h1 data-sal="fade" data-sal-duration="800">
                   Current Vote
                 </h1>
-                <p
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >Your vote in this proposal will hold <b>2.5x</b> as much power.</p>
+                <p data-sal="fade" data-sal-duration="800">
+                  Your vote in this proposal will hold <b>2.5x</b> as much power.
+                </p>
                 <div
                   style={{
                     position: "relative",
@@ -198,28 +192,35 @@ export default function Proposal({ match }) {
                     width: "100%",
                     height: "8px",
                     borderRadius: "8px",
-                    marginBottom: "2rem"
+                    marginBottom: "2rem",
                   }}
                 >
-                  <div style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    height: "8px",
-                    borderRadius: "8px",
-                    backgroundColor: "#ed4637",
-                    width: "100%"
-                  }} />
-                  <div data-sal="slide-right" data-sal-delay={100} data-sal-duration="1200" style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    height: "8px",
-                    borderRadius: "8px 0 0 8px",
-                    backgroundColor: "#51cf5d",
-                    width: `${proposal.approval}%`,
-                    opacity: 1
-                  }} />
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      height: "8px",
+                      borderRadius: "8px",
+                      backgroundColor: "#ed4637",
+                      width: "100%",
+                    }}
+                  />
+                  <div
+                    data-sal="slide-right"
+                    data-sal-delay={100}
+                    data-sal-duration="1200"
+                    style={{
+                      position: "absolute",
+                      top: "0",
+                      left: "0",
+                      height: "8px",
+                      borderRadius: "8px 0 0 8px",
+                      backgroundColor: "#51cf5d",
+                      width: `${proposal.approval}%`,
+                      opacity: 1,
+                    }}
+                  />
                 </div>
                 <button
                   data-sal="fade"
@@ -232,7 +233,10 @@ export default function Proposal({ match }) {
                     borderRadius: "6px",
                     color: "#fff",
                     padding: "1rem",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    tx(writeContracts.BlockFundDAO.voteProposal(proposalId, "1"));
                   }}
                 >
                   Yay
@@ -249,7 +253,10 @@ export default function Proposal({ match }) {
                     color: "#fff",
                     padding: "1rem",
                     cursor: "pointer",
-                    marginLeft: "1%"
+                    marginLeft: "1%",
+                  }}
+                  onClick={() => {
+                    tx(writeContracts.BlockFundDAO.voteProposal(proposalId, "0"));
                   }}
                 >
                   Nay
