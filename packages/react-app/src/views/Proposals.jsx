@@ -28,7 +28,7 @@ export default function Proposals() {
           author: "Jeff Smith",
           approval: 60,
           requiredFunds: 1000,
-          description: `The purpose of this plan is to promote and recognize the value of our campus trees. According to trees.standford.edu, there has been loss of diversity from the original tree and shrub plantings of the 1880s and 1890s, which is well-documented for conifers. Over the past quarter century there has also been a loss of eucalypt species, from over 125 species present in the early 1970s to fifty-one today. The school is already doing a superb restoration of the Arizona Garden, but we want to expand that for a broader restoration of the remaining areas of campus.`,
+          description: `The purpose of this plan is to promote and recognize the value of our campus trees. According to trees.stanford.edu, there has been loss of diversity from the original tree and shrub plantings of the 1880s and 1890s, which is well-documented for conifers. Over the past quarter century there has also been a loss of eucalypt species, from over 125 species present in the early 1970s to fifty-one today. The school is already doing a superb restoration of the Arizona Garden, but we want to expand that for a broader restoration of the remaining areas of campus.`,
           image: "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218.jpg"
         },
         {
