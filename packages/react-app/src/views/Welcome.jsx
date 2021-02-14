@@ -11,25 +11,24 @@ import "sal.js/dist/sal.css";
 export default function Welcome() {
 
   const cardStyle = {
-        boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+        boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
         width: "25%",
         display: "inline-block",
         verticalAlign: "top",
         margin: "0.5rem",
-        background: "#F5F9FF" ,
+        background: "#fff" ,
         };
 
   const history = useHistory();
 
-  const buttonStyle = {
-        backgroundColor: "#2F43F5",
-        width: "fit-content",
-        height: "fit-content",
-        fontSize: "16px",
+    const buttonStyle = {
+        background: "rgb(47, 67, 245)",
         border: "none",
-        borderRadius: "50px",
+        width: "50%",
+        fontSize: "16px",
+        borderRadius: "6px",
         color: "#fff",
-        padding: "0.5rem 1.5rem",
+        padding: "0.5rem",
         cursor: "pointer"
       }
 
@@ -37,7 +36,7 @@ export default function Welcome() {
 
   return (
       <div>
-    <div style={{ background: "#F5F9FF" }}>
+    <div style={{ background: "#F5F9FF", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
         <div style={{width: "fit-content",
                      margin: "0px auto"}}>
         <div style={{textAlign: "left",
@@ -51,18 +50,19 @@ export default function Welcome() {
                         fontSize: "65px",
                         fontWeight: "800"}}>Palo Alto Fund</h1>
             <h4 style={{color: "#2F51C9",
-                        marginBottom: "30px"}}>powered by BlockFund</h4>
+                        marginBottom: "30px",
+                        marginTop: "-20px"}}>powered by BlockFund</h4>
             <h4 style={{fontWeight: "400",
                         marginBottom: "30px"}}>A fully decentralized community governance platform powered by blockchain technology.</h4>
 
-            <Button 
+            <button 
                 onClick={()=>{
                 console.log("join community fund")}}
                 // data-sal="fade"
                 //   data-sal-duration="800"
                   style={buttonStyle}
                 className={"hoverzoom"}
-                >JOIN COMMINUTY FUND </Button>
+                >Join Community Fund</button>
 
         </div>
         <div style={{
@@ -90,7 +90,7 @@ export default function Welcome() {
         data-sal-duration="900" style={{fontWeight: "400"}}>BlockFund is a decentralised autonomous organisation which democratises community funds. BlockFund allows residents to vote for a project they want in a transparent process. BlockFund highlights the need for environment sustainability projects through ArcGIS mapping, and aids civilians/government to plan a community through cultural urban planning</h4>
     </div >
 
-    <div style={{ padding: "2rem 6rem" }}>
+    <div style={{ background: "#F5F9FF", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)", padding: "2rem 6rem" }}>
       <h1
         data-sal="slide-up"
         data-sal-delay="200"
@@ -110,6 +110,10 @@ export default function Welcome() {
         title="Step 1: Pay Monthly Fees"
         style={cardStyle}
       >
+        <img src={require('../coin.png')}
+                style={{maxWidth : "100px",
+                maxHeight: "100px",
+                marginBottom: "20px"}}/>
         <p>Pay your monthly fees to the community to maintain and better your community.</p>
       </Card>
       <Card
@@ -119,6 +123,10 @@ export default function Welcome() {
         title="Step 2: Submit Proposals"
         style={cardStyle}
       >
+        <img src={require('../contract.png')}
+        style={{maxWidth : "100px",
+        maxHeight: "100px",
+        marginBottom: "20px"}}/>
         <p>Dream up the improvements you would like to see in your community and submit a proposal.</p>
       </Card>
       <Card
@@ -128,7 +136,11 @@ export default function Welcome() {
         title="Step 3: Vote For Proposals"
         style={cardStyle}
       >
-        <p>Everyone in the community can vote "yes" or "no" to every proposal.</p>
+        <img src={require('../online-voting.png')}
+        style={{maxWidth : "100px",
+        maxHeight: "100px",
+        marginBottom: "20px"}}/>
+        <p>Everyone in the community can vote "yes" or "no" to every proposal.</p><br></br>
       </Card>
       </div>
     </div>
@@ -136,7 +148,6 @@ export default function Welcome() {
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="800"
-        className={"hoverzoom"} 
         style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
@@ -149,11 +160,11 @@ export default function Welcome() {
                      display: "inline-block"}}>
                     <h2>COMMUNITY PROPOSALS</h2>
                     <h4 style={{margin: "20px 0", fontWeight: "400"}}>View a list of all the active proposals in the community and vote to support it! Click on a proposal to view details, relevant documents, and leave comments.</h4>
-                <Button 
+                <button 
                 //onClick={()=> history.push("/proposals")}
                 style={buttonStyle}
                 className={"hoverzoom"}
-                >VIEW PROPOSALS </Button>
+                >VIEW PROPOSALS </button>
         </div>
         <div style={{textAlign: "left",
                      maxWidth: "40vw",
@@ -169,8 +180,7 @@ export default function Welcome() {
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="900"
-        className={"hoverzoom"} 
-        className={"hoverzoom"} style={{textAlign: "left",
+        style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
@@ -193,20 +203,19 @@ export default function Welcome() {
                      display: "inline-block"}}>
                     <h2>FINANCES</h2>
                     <h4 style={{margin: "20px 0", fontWeight: "400"}}>Pay your community dues, view your total community fund, and submit proposals to your community.</h4>
-                    <Button 
+                    <button 
                 onClick={()=>{
                 console.log("join community fund")}}
                 style={buttonStyle}
                 className={"hoverzoom"}
-                >VIEW DASHBOARD </Button>
+                >VIEW DASHBOARD </button>
         </div>
     </div>
     
     <div data-sal="slide-up"
         data-sal-delay="200"
         data-sal-duration="900"
-        className={"hoverzoom"} 
-        className={"hoverzoom"} style={{textAlign: "left",
+        style={{textAlign: "left",
                      paddingTop: "30px",
                      display: "block",
                      width: "fit-content",
@@ -218,12 +227,12 @@ export default function Welcome() {
                      display: "inline-block"}}>
                     <h2>COMMUNITY MEMBERS</h2>
                     <h4 style={{margin: "20px 0", fontWeight: "400"}}>View a list of all current community members, and add new members to the community.</h4>
-                    <Button 
+                    <button 
                 onClick={()=>{
                 console.log("join community fund")}}
                 style={buttonStyle}
                 className={"hoverzoom"}
-                >VIEW MEMBERS </Button>
+                >VIEW MEMBERS </button>
         </div>
         <div style={{textAlign: "left",
                      maxWidth: "40vw",

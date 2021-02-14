@@ -1306,6 +1306,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@esri/react-arcgis@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@esri/react-arcgis/-/react-arcgis-5.1.0.tgz#1d49380cb8f99a3968e0e72b83c0516a9273c213"
+  integrity sha512-4zXVx5DoJ5OFN+s1gp9sIWsTP307NlvT7meCsFe/lqPJfs239ztYNnEy6V9tMpPBIx+Lz5fTy47SS61VJM7ToQ==
+
 "@ethereum-waffle/chai@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@ethereum-waffle/chai/-/chai-3.1.1.tgz#2d2594e19613cdee0eaa1a38fc8dac31f66460e6"
@@ -3707,10 +3712,10 @@ axios@^0.19.0:
   dependencies:
     follow-redirects "1.5.10"
 
-axios@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
     follow-redirects "^1.10.0"
 
@@ -7245,6 +7250,11 @@ esrecurse@^4.1.0, esrecurse@^4.3.0:
   integrity sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==
   dependencies:
     estraverse "^5.2.0"
+
+esri-loader@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/esri-loader/-/esri-loader-3.0.0.tgz#4ff9008cf3223aa284507ec19d575a8cee7a6e6e"
+  integrity sha512-JvNL1agqzJz13uMaAfjktO66iIpJLYjmHabS73tEc910ZCAXMl5i7mWXQxbCdYCIWwRtL3SEhXBXRxSFfX6MBQ==
 
 estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.3.0"

@@ -1,24 +1,60 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
+import { Card, Input, Spin } from "antd";
 import sal from "sal.js";
 import "sal.js/dist/sal.css";
 import commentBox from "commentbox.io";
+import axios from "axios";
 
 export default function Proposal({ match }) {
+  const [loading, setLoading] = useState(false);
+  const [answer, setAnswer] = useState("");
   const [proposals, setProposals] = useState([]);
   const [proposal, setProposal] = useState({});
   const { id } = match.params;
   const cardStyle = {
-    boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
+    boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
     width: "80%",
     margin: "1rem",
     borderRadius: "6px",
     overflow: "hidden",
-    padding: "1rem 6rem",
     display: "inline-block"
+  };
+  const inputRef = useRef(null);
+  const inputCapture = e => {
+    const ques = inputRef.current.state.value;
+    if (e.key === "Enter") {
+      (async () => {
+        setLoading(true);
+        try {
+          const ans = await axios.post(
+            "https://api.openai.com/v1/engines/davinci/completions",
+            {
+              "prompt": `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. The assistant is an excellent reader, who is ready to answer questions about the following passage:\n\"\"\"\n${proposal.description}\n\"\"\"\n\nHuman: ${ques}\nAI:`,
+              "max_tokens": 25,
+              "temperature": 0.9,
+              "max_tokens": 50,
+              "top_p": 1,
+              "frequency_penalty": 0,
+              "presence_penalty": 0.6,
+              "stop": ["Human:"]
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer sk-dEqxyRl2VyQ4bh2yfJxiOVJguOKMJEghoH1qEsrd"
+              }
+            },
+          );
+          setAnswer(ans.data.choices[0].text);
+        } catch (err) {
+          setAnswer("An error occurred—please try again later.");
+        }
+        setLoading(false);
+      })();
+    }
   };
 
   useEffect(() => {
@@ -31,7 +67,7 @@ export default function Proposal({ match }) {
         author: "Jeff Smith",
         approval: 60,
         requiredFunds: 1000,
-        description: "testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf...",
+        description: `The purpose of this plan is to promote and recognize the value of our campus trees. According to trees.stanford.edu, there has been loss of diversity from the original tree and shrub plantings of the 1880s and 1890s, which is well-documented for conifers. Over the past quarter century there has also been a loss of eucalypt species, from over 125 species present in the early 1970s to fifty-one today. The school is already doing a superb restoration of the Arizona Garden, but we want to expand that for a broader restoration of the remaining areas of campus.`,
         image: "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218.jpg"
       },
       {
@@ -40,12 +76,30 @@ export default function Proposal({ match }) {
         author: "Jane Donovan",
         approval: 80,
         requiredFunds: 3000,
-        description: "testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf...",
+        description: `The purpose of the Plan is to achieve a mix of land uses, develop a form based design code, improve
+        transportation and pedestrian circulation, transportation options, and to enhance the streetscape and
+        appearance of the corridor through urban design techniques.
+        
+        For purpose of the RFP, the consultant is to provide a detailed work plan describing the process and the
+        methodology to be employed in deriving the information requested. The City anticipates refinement of
+        the final scope of services based on additional information contained in the responses to this RFP or
+        information from the presentations made to the Corridor Staff Team by the finalists.
+        
+        The City of Rockville occupies 13.44 square miles within the Metropolitan Washington, DC area and is
+        located 12 miles northwest of Washington. Rockville had a population estimate of approximately 57,100
+        according to the 2004 Census estimates.
+        
+        The City of Rockville operates under the council/manager form of municipal government and derives its
+        authority from a charter granted by the State of Maryland. As mandated by state law, Montgomery
+        County provides school and health services in Rockville. The City has an employment base of
+        approximately 80,059 jobs (2005 estimate, MWCOG Round 7 Forecast projection). The City has
+        undergone tremendous redevelopment and infill development in recent years, including an ongoing
+        redevelopment of the Town Center.`,
         image: "https://thecentraltrend.com/wp-content/uploads/2017/02/stars-900x563.jpg"
       }
     ]);
 
-    sal();
+    sal({ threshold: 0.2 });
 
     return () => removeCommentBox();
   }, []);
@@ -58,7 +112,7 @@ export default function Proposal({ match }) {
 
   return (
     <div style={{ padding: "2rem 6rem", textAlign: "left" }}>
-      <Link to="/proposals">&lt; Back to List</Link>
+      <Link to="/proposals" style={{ paddingLeft: "7.9rem" }}>&lt; Back to List</Link>
       {!proposal ? (
         <p>Proposal not found.</p>
       ) : (
@@ -67,45 +121,45 @@ export default function Proposal({ match }) {
             data-sal="fade"
             data-sal-duration="800"
           >
-            <Card style={cardStyle}>
-              <h1>{proposal.title}</h1>
-              <img
-                src={proposal.image}
-                style={{
-                  boxShadow: "4px 4px 4px rgba(0,0,0,0.05)",
-                  width: 600,
-                  borderRadius: "6px",
-                  overflow: "hidden",
-                  marginBottom: "3rem"
-                }}
-              />
-              <div style={{ textAlign: "left" }}>
+            <Card
+              style={cardStyle}
+              cover={
+                <div
+                  style={{
+                    width: "100%",
+                    height: "200px",
+                    backgroundImage: `url(${proposal.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
+                />
+              }
+            >
+              <div style={{ textAlign: "left", padding: "1rem 6rem 4rem" }}>
+                <h1 style={{ fontSize: "3rem" }}>{proposal.title}</h1>
                 <h3
-                  style={{ opacity: 0.5 }}
-                  data-sal="slide-up"
+                  data-sal="fade"
                   data-sal-duration="800"
                 >
                   Community Sponsor
                 </h3>
-                <h2
+                <h1
                   data-sal="fade"
                   data-sal-duration="800"
-                >{proposal.author} (0x1234)</h2>
+                >{proposal.author} (0x1234)</h1>
                 <br />
                 <h3
                   data-sal="fade"
                   data-sal-duration="800"
-                  style={{ opacity: 0.5 }}
                 >Requested Fund</h3>
-                <h2
+                <h1
                   data-sal="fade"
                   data-sal-duration="800"
-                >{proposal.requiredFunds} DAI</h2>
+                >{proposal.requiredFunds} DAI</h1>
                 <br />
                 <h3
                   data-sal="fade"
                   data-sal-duration="800"
-                  style={{ opacity: 0.5 }}
                 >Purpose</h3>
                 <p
                   data-sal="fade"
@@ -115,17 +169,28 @@ export default function Proposal({ match }) {
                 <h3
                   data-sal="fade"
                   data-sal-duration="800"
-                  style={{ opacity: 0.5 }}
-                >Relevant Documents</h3>
-                <p
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >TODO</p>
+                >Questions and Answers</h3>
+                <Input ref={inputRef} placeholder="Your question here" onKeyUp={inputCapture} />
+                {loading ? (
+                  <div style={{ marginTop: "1rem", textAlign: "center" }}><Spin /></div>
+                ) : (
+                  answer && (
+                    <p style={{ marginTop: "1rem", opacity: 0.5 }}>
+                      {answer}
+                    </p>
+                  )
+                )}
                 <hr style={{ opacity: 0.25, margin: "3rem 0" }} />
                 <h1
                   data-sal="fade"
                   data-sal-duration="800"
-                >Vote Progress</h1>
+                >
+                  Current Vote
+                </h1>
+                <p
+                  data-sal="fade"
+                  data-sal-duration="800"
+                >Your vote in this proposal will hold <b>2.5x</b> as much power.</p>
                 <div
                   style={{
                     position: "relative",
@@ -142,7 +207,7 @@ export default function Proposal({ match }) {
                     left: "0",
                     height: "8px",
                     borderRadius: "8px",
-                    backgroundColor: "#E8E6E6",
+                    backgroundColor: "#ed4637",
                     width: "100%"
                   }} />
                   <div data-sal="slide-right" data-sal-delay={100} data-sal-duration="1200" style={{
@@ -150,20 +215,21 @@ export default function Proposal({ match }) {
                     top: "0",
                     left: "0",
                     height: "8px",
-                    borderRadius: "8px",
-                    backgroundColor: "#2F43F5",
-                    width: `${proposal.approval}%`
+                    borderRadius: "8px 0 0 8px",
+                    backgroundColor: "#51cf5d",
+                    width: `${proposal.approval}%`,
+                    opacity: 1
                   }} />
                 </div>
                 <button
                   data-sal="fade"
                   data-sal-duration="800"
                   style={{
-                    backgroundColor: "#2F43F5",
+                    backgroundColor: "#51cf5d",
                     width: "49%",
                     fontSize: "16px",
                     border: "none",
-                    borderRadius: "50px",
+                    borderRadius: "6px",
                     color: "#fff",
                     padding: "1rem",
                     cursor: "pointer"
@@ -175,12 +241,12 @@ export default function Proposal({ match }) {
                   data-sal="fade"
                   data-sal-duration="800"
                   style={{
-                    background: "none",
-                    border: "solid 2px #2F43F5",
+                    background: "#ed4637",
+                    border: "none",
                     width: "49%",
                     fontSize: "16px",
-                    borderRadius: "50px",
-                    color: "#2F43F5",
+                    borderRadius: "6px",
+                    color: "#fff",
                     padding: "1rem",
                     cursor: "pointer",
                     marginLeft: "1%"
