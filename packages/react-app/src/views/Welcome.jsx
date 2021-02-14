@@ -90,7 +90,7 @@ export default function Welcome() {
         data-sal-duration="900" style={{fontWeight: "400"}}>BlockFund is a decentralised autonomous organisation which democratises community funds. BlockFund allows residents to vote for a project they want in a transparent process. BlockFund highlights the need for environment sustainability projects through ArcGIS mapping, and aids civilians/government to plan a community through cultural urban planning</h4>
     </div >
 
-    <div style={{ padding: "2rem 6rem" }}>
+    <div style={{ background: "#F5F9FF", borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)", padding: "2rem 6rem" }}>
       <h1
         data-sal="slide-up"
         data-sal-delay="200"
