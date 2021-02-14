@@ -285,7 +285,10 @@ function App(props) {
             <Welcome />
           </Route>
           <Route path="/proposals">
-            <Proposals />
+            <Proposals
+              useContractReader={useContractReader}
+              readContracts={readContracts}
+            />
           </Route>
           <Route
             path="/proposal/:id"
