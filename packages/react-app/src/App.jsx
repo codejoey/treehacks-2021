@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge } from "./components"
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Proposals, Process } from "./views"
+import { Hints, ExampleUI, Proposals, Proposal, Finance, Explore } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -204,8 +204,11 @@ function App(props) {
           <Menu.Item key="/proposals">
             <Link onClick={()=>{setRoute("/proposals")}} to="/proposals">Proposals</Link>
           </Menu.Item>
-          <Menu.Item key="/process">
-            <Link onClick={()=>{setRoute("/process")}} to="/process">Process</Link>
+          <Menu.Item key="/finance">
+            <Link onClick={()=>{setRoute("/finance")}} to="/finance">Finance</Link>
+          </Menu.Item>  
+          <Menu.Item key="/explore">
+            <Link onClick={()=>{setRoute("/explore")}} to="/explore">Explore</Link>
           </Menu.Item>
         </Menu>
 
@@ -273,8 +276,12 @@ function App(props) {
           <Route path="/proposals">
             <Proposals />
           </Route>
-          <Route path="/process">
-            <Process />
+          <Route path="/proposal/:id" component={Proposal} />
+          <Route path="/finance">
+            <Finance />
+          </Route>
+          <Route path="/explore">
+            <Explore />
           </Route>
         </Switch>
       </BrowserRouter>
