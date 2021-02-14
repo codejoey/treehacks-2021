@@ -12,7 +12,7 @@ import { Header, Account, Faucet, Ramp, Contract, GasGauge, Footer } from "./com
 import { Transactor } from "./helpers";
 import { formatEther, parseEther } from "@ethersproject/units";
 //import Hints from "./Hints";
-import { Hints, ExampleUI, Proposals, Finance, Explore, Welcome, Proposal, Members } from "./views"
+import { Hints, ExampleUI, Proposals, Finance, Explore, Welcome, Proposal, Members, CommunityDiversity, CommunityGreenery } from "./views"
 import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants";
 /*
     Welcome to 🏗 scaffold-eth !
@@ -208,6 +208,12 @@ function App(props) {
           <Menu.Item key="/members">
             <Link onClick={()=>{setRoute("/members")}} to="/members">Members</Link>
           </Menu.Item>
+          <Menu.Item key="/community-diversity">
+            <Link onClick={()=>{setRoute("/community-diversity")}} to="/community-diversity">Community Diversity</Link>
+          </Menu.Item>
+          <Menu.Item key="/community-greenery">
+            <Link onClick={()=>{setRoute("/community-greenery")}} to="/community-greenery">Community Greenery</Link>
+          </Menu.Item>
           {/* <Menu.Item key="/hints">
             <Link onClick={()=>{setRoute("/hints")}} to="/hints">Hints</Link>
           </Menu.Item> */}
@@ -296,6 +302,12 @@ function App(props) {
           </Route>
           <Route path="/Members">
             <Members />
+          </Route>
+          <Route path="/community-diversity">
+            <CommunityDiversity />
+          </Route>
+          <Route path="/community-greenery">
+            <CommunityGreenery />
           </Route>
         </Switch>
       </BrowserRouter>

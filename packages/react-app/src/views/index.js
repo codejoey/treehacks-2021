@@ -6,3 +6,5 @@ export { default as Welcome } from "./Welcome";
 export { default as Members } from "./Members";
 export { default as Finance } from "./Finance";
 export { default as Explore } from "./Explore";
+export { default as CommunityDiversity } from "./CommunityDiversity";
+export { default as CommunityGreenery } from "./CommunityGreenery";
