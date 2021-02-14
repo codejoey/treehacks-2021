@@ -4,3 +4,6 @@
 .proposals .ant-card:hover {
   transform: translateX(1.5rem) scale(1.02);
 }
+#commentbox iframe {
+  height: 100vh;
+}
