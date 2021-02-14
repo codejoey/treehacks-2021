@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card } from "antd";
 import sal from "sal.js";
 import "sal.js/dist/sal.css";
@@ -53,25 +54,29 @@ export default function Explore() {
       </button>
       <br />
       <div>
-        <Card
-          data-sal="slide-up"
-          data-sal-delay="200"
-          data-sal-duration="800"
-          style={cardStyle}
-          cover={<div style={{ backgroundImage: `url(${greeneryMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
-        >
-          <h1>Greenery Map</h1>
-        </Card>
-        <Card
-          data-sal="slide-up"
-          data-sal-delay="300"
-          data-sal-duration="800"
-          style={cardStyle}
-          cover={<div style={{ backgroundImage: `url(${demoMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
-        >
-          <h1>Demographics Map</h1>
-        </Card>
-        <div style={{height: "40rem"}} />
+        <Link to="/community-greenery">
+          <Card
+            data-sal="slide-up"
+            data-sal-delay="200"
+            data-sal-duration="800"
+            style={cardStyle}
+            cover={<div style={{ backgroundImage: `url(${greeneryMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
+          >
+            <h1>Greenery Map</h1>
+          </Card>
+        </Link>
+        <Link to="/community-diversity">
+          <Card
+            data-sal="slide-up"
+            data-sal-delay="300"
+            data-sal-duration="800"
+            style={cardStyle}
+            cover={<div style={{ backgroundImage: `url(${demoMap})`, backgroundSize: "cover", backgroundPosition: "center", width: "100%", height: "400px"}} />}
+          >
+            <h1>Demographics Map</h1>
+          </Card>
+        </Link>
+        <div style={{height: "10rem"}} />
       </div>
     </div>
   );
