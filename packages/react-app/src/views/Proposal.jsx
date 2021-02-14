@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Card } from "antd";
+import { Card, Input, Spin } from "antd";
 import sal from "sal.js";
 import "sal.js/dist/sal.css";
 import commentBox from "commentbox.io";
+import axios from "axios";
 
 export default function Proposal({ match }) {
+  const [loading, setLoading] = useState(false);
+  const [answer, setAnswer] = useState("");
   const [proposals, setProposals] = useState([]);
   const [proposal, setProposal] = useState({});
   const { id } = match.params;
@@ -20,6 +23,40 @@ export default function Proposal({ match }) {
     padding: "1rem 6rem",
     display: "inline-block"
   };
+  const inputRef = useRef(null);
+  const inputCapture = e => {
+    const ques = inputRef.current.state.value;
+    if (e.key === "Enter") {
+      (async () => {
+        setLoading(true);
+        try {
+          const ans = await axios.post(
+            "https://api.openai.com/v1/engines/davinci/completions",
+            {
+              "prompt": `The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. The assistant is an excellent reader, who is ready to answer questions about the following passage:\n\"\"\"\n${proposal.description}\n\"\"\"\n\nHuman: ${ques}\nAI:`,
+              "max_tokens": 25,
+              "temperature": 0.9,
+              "max_tokens": 50,
+              "top_p": 1,
+              "frequency_penalty": 0,
+              "presence_penalty": 0.6,
+              "stop": ["Human:"]
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer sk-dEqxyRl2VyQ4bh2yfJxiOVJguOKMJEghoH1qEsrd"
+              }
+            },
+          );
+          setAnswer(ans.data.choices[0].text);
+        } catch (err) {
+          setAnswer("An error occurred—please try again later.");
+        }
+        setLoading(false);
+      })();
+    }
+  };
 
   useEffect(() => {
     const removeCommentBox = commentBox("5640591161425920-proj");
@@ -31,7 +68,25 @@ export default function Proposal({ match }) {
         author: "Jeff Smith",
         approval: 60,
         requiredFunds: 1000,
-        description: "testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf...",
+        description: `The purpose of the Plan is to achieve a mix of land uses, develop a form based design code, improve
+        transportation and pedestrian circulation, transportation options, and to enhance the streetscape and
+        appearance of the corridor through urban design techniques.
+        
+        For purpose of the RFP, the consultant is to provide a detailed work plan describing the process and the
+        methodology to be employed in deriving the information requested. The City anticipates refinement of
+        the final scope of services based on additional information contained in the responses to this RFP or
+        information from the presentations made to the Corridor Staff Team by the finalists.
+        
+        The City of Rockville occupies 13.44 square miles within the Metropolitan Washington, DC area and is
+        located 12 miles northwest of Washington. Rockville had a population estimate of approximately 57,100
+        according to the 2004 Census estimates.
+        
+        The City of Rockville operates under the council/manager form of municipal government and derives its
+        authority from a charter granted by the State of Maryland. As mandated by state law, Montgomery
+        County provides school and health services in Rockville. The City has an employment base of
+        approximately 80,059 jobs (2005 estimate, MWCOG Round 7 Forecast projection). The City has
+        undergone tremendous redevelopment and infill development in recent years, including an ongoing
+        redevelopment of the Town Center.`,
         image: "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218.jpg"
       },
       {
@@ -40,12 +95,30 @@ export default function Proposal({ match }) {
         author: "Jane Donovan",
         approval: 80,
         requiredFunds: 3000,
-        description: "testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf testsfsfdf sdf sdfk msd; kma testsfsfdf sdf sdfk msd; kma msd; kma testsfsfdf sdf sdfk msd; kma testsfsfdf sdf...",
+        description: `The purpose of the Plan is to achieve a mix of land uses, develop a form based design code, improve
+        transportation and pedestrian circulation, transportation options, and to enhance the streetscape and
+        appearance of the corridor through urban design techniques.
+        
+        For purpose of the RFP, the consultant is to provide a detailed work plan describing the process and the
+        methodology to be employed in deriving the information requested. The City anticipates refinement of
+        the final scope of services based on additional information contained in the responses to this RFP or
+        information from the presentations made to the Corridor Staff Team by the finalists.
+        
+        The City of Rockville occupies 13.44 square miles within the Metropolitan Washington, DC area and is
+        located 12 miles northwest of Washington. Rockville had a population estimate of approximately 57,100
+        according to the 2004 Census estimates.
+        
+        The City of Rockville operates under the council/manager form of municipal government and derives its
+        authority from a charter granted by the State of Maryland. As mandated by state law, Montgomery
+        County provides school and health services in Rockville. The City has an employment base of
+        approximately 80,059 jobs (2005 estimate, MWCOG Round 7 Forecast projection). The City has
+        undergone tremendous redevelopment and infill development in recent years, including an ongoing
+        redevelopment of the Town Center.`,
         image: "https://thecentraltrend.com/wp-content/uploads/2017/02/stars-900x563.jpg"
       }
     ]);
 
-    sal();
+    sal({ threshold: 0.2 });
 
     return () => removeCommentBox();
   }, []);
@@ -116,11 +189,19 @@ export default function Proposal({ match }) {
                   data-sal="fade"
                   data-sal-duration="800"
                   style={{ opacity: 0.5 }}
-                >Relevant Documents</h3>
-                <p
-                  data-sal="fade"
-                  data-sal-duration="800"
-                >TODO</p>
+                >Questions and Answers</h3>
+                <Input ref={inputRef} placeholder="Your question here" onKeyUp={inputCapture} />
+                {loading ? (
+                  <div style={{ marginTop: "1rem", textAlign: "center" }}><Spin /></div>
+                ) : (
+                  answer && (
+                    <p
+                      style={{ marginTop: "1rem" }}
+                    >
+                      {answer}
+                    </p>
+                  )
+                )}
                 <hr style={{ opacity: 0.25, margin: "3rem 0" }} />
                 <h1
                   data-sal="fade"
