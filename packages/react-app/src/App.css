@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+html { height: 100%; }
