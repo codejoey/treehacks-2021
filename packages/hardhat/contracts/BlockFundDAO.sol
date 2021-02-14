@@ -27,7 +27,7 @@ contract BlockFundDAO is Ownable {
 
     uint256 public constant DEFAULT_VOTE_WEIGHT = 100;
     uint256 public constant MAX_VOTE_WEIGHT = 400;
-    uint256 public constant VOTING_PERIOD = 60; // unix timestamp
+    uint256 public constant VOTING_PERIOD = 604800; // unix timestamp
     uint256 public constant MEMBER_DUES_MINIMUM = 50000000000000000000;
 
     struct Proposal {
@@ -62,18 +62,24 @@ contract BlockFundDAO is Ownable {
         address initiator2,
         address initiator3
     ) public {
+        require(msg.sender != initiator1, "BlockFund: duplicate initiator");
+        require(msg.sender != initiator2, "BlockFund: duplicate initiator");
+        require(msg.sender != initiator3, "BlockFund: duplicate initiator");
         require(initiator1 != initiator2, "BlockFund: duplicate initiator");
         require(initiator1 != initiator3, "BlockFund: duplicate initiator");
         require(initiator2 != initiator3, "BlockFund: duplicate initiator");
 
+        isMember[msg.sender] = true;
         isMember[initiator1] = true;
         isMember[initiator2] = true;
         isMember[initiator3] = true;
 
+        memberVoteWeight[msg.sender] = DEFAULT_VOTE_WEIGHT;
         memberVoteWeight[initiator1] = DEFAULT_VOTE_WEIGHT;
         memberVoteWeight[initiator2] = DEFAULT_VOTE_WEIGHT;
         memberVoteWeight[initiator3] = DEFAULT_VOTE_WEIGHT;
 
+        members.push(msg.sender);
         members.push(initiator1);
         members.push(initiator2);
         members.push(initiator3);
