@@ -1,3 +1,13 @@
+TreeHacks is Stanford University’s annual intercollegiate hackathon with the mission to empower the most talented and motivated collegiate hackers to tackle the world's biggest problems.
+
+Out of 224 submissions and with 729 competitors. Our team of 4 strangers won one of the 5 top prizes:
+Most Impactful Hack Prize: The project with the greatest potential social impact.
+
+And another in the sponsor prize category:
+[Alchemy] Best Hack using Alchemy API and Developer Tools: The best decentralized application developed on Ethereum using Alchemy’s API and developer tools.
+
+My contribution: Learnt ArcGIS developer tools overnight to build StoryMaps. Wrote narratives & submission text. Created User Stories & Slide Deck. Pitched 8+ times to different groups of judges to progress, and in Awards Ceremony. Came up with component problems & solutions of cultural urban planning/home seeking through augmented maps, and on community-level green urban planning through satellite image processing to identify areas lacking foliage.
+
 ## See our live demo!
 
 **On Rinkeby testnet blockchain (recommended):** [https://rinkeby.kelas.dev](https://rinkeby.kelas.dev)
